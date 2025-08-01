@@ -1,0 +1,51 @@
+============================================================================================================================
+Day 1 30
+============================================================================================================================
+1) Create Eureka Server / Service Registry:-
+###################################################
+
+a) Create a Spring Boot project named service-registry with package name com.serviceregistry
+ Add dependency: Eureka Server and SpringBoot Dev Tools
+
+b) Add @EnableEurekaServer in main class (ServiceRegistryApplication) and import it.
+
+c) Add in application.properties file:                 
+         server.port=8761 			    //to run eureka Server on port 8761                                   
+         eureka.client.register-with-eureka=false  //we are telling that donot register eureka server itself as a client.            
+         eureka.client.fetch-registry=false 	  //when i try to get client details i donot want my eureka server 
+						 //to treat this as client & even try to make an attempt to fetch the details.
+Note: 
+This tells the Eureka Server:
+Don't register itself as a client.
+Don't try to fetch registry data (because it's the registry).                
+--------------------------------------------------------------
+|      | Run Eureka Server                                    
+|      | Access: http://localhost:8761   go to browser and hit http://localhost:8080 
+					 it shows all microservices registered with eureka server.                     
+==============================================================
+By running eureka server on port 8761 all your microservices will automatically registered with eureka server without doing anything.
+
+
+2) Create another project named microservice-1 and package name com.microservice1
+ Add dependency: Eureka Discovery Client, Spring Web and SpringBoot Dev Tools
+
+  Add @EnableDiscoveryClient in main class (ServiceRegistryApplication) and import it.             
+  
+  Configure application.properties with port number where you want to run your microservice:                        
+         server.port=8081   //run this microservice on port 8081
+
+  right click on your project microservice-1 and run as springboot app
+	Access: http://localhost:8761
+	it shows MICROSERVICE-1 registered with eureka server
+
+3) Create another project named microservice-2 and package name com.microservice2
+ Add dependency: Eureka Discovery Client, Spring Web and SpringBoot Dev Tools
+
+  Add @EnableDiscoveryClient in main class (ServiceRegistryApplication) and import it.             
+  
+  Configure application.properties with port number where you want to run your microservice:                        
+         server.port=8082   //run this microservice on port 8082
+
+  right click on your project microservice-2 and run as springboot app
+	Access: http://localhost:8761
+	it shows MICROSERVICE-2 registered with eureka server
