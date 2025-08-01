@@ -1,4 +1,4 @@
-🌐 What are Microservices?
+🌐 What are Microservices
 ################################
 Microservices is an architecture style where an application is broken down into small, independent services that communicate over a network (usually HTTP). Each service focuses on a single business function, is independently deployable, and can be developed, scaled, and maintained separately.
 
